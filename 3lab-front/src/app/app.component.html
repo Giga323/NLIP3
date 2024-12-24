@@ -1,0 +1,33 @@
+<div class="content-wrapper">
+  <div class="input">
+    <input type="file" (change)="onFilesSelected($event)" multiple>
+    <button class="button" (click)="getAbstractOfTheText(files)">Generate</button>
+  </div>
+
+  <button class="button" (click)="toggleMenu()">
+    <span> Menu </span>
+  </button>
+
+  <div class="menu" *ngIf="isMenuOpen">
+    <ng-container *ngFor="let method of methods">
+      <button class="menu-item" (click)="chooseMethod(method)"> {{ method }} </button>
+    </ng-container>
+  </div>
+
+  <div class="result abstract">
+
+      <div class="items sentence-extraction">
+        <span class="title"> Classical Abstract </span>
+        <ng-container *ngFor="let item of abstract.sentenceExtraction">
+          <li class="list-item"> {{ item.value }} </li>
+        </ng-container>
+      </div>
+
+      <div class="items keywords-extraction">
+        <span class="title"> Keywords Abstract </span>
+        <ng-container *ngFor="let item of abstract.keywordsExtraction">
+          <li class="list-item"> {{ item.value }} </li>
+        </ng-container>
+      </div>
+  </div>
+</div>
